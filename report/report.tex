@@ -11,6 +11,8 @@
 \usepackage{amssymb}
 \usepackage{caption}
 \usepackage{subcaption}
+\usepackage{float}
+\usepackage{multirow}
 \usepackage{hyperref}
 \usepackage{xcolor}
 \usepackage{listings}
@@ -221,7 +223,7 @@ nauwelijks beter dan random ondanks haar doelgerichte ontwerp: zonder
 muur\-bewustzijn raakt zij in 79\% van de episodes verstrikt en haalt
 zij de tijdslimiet.
 
-\begin{table}[h]
+\begin{table}[H]
 \centering
 \caption{Greedy evaluatie ($\varepsilon=0$) over 100 episodes.
 ``Mean return'' is het gemiddelde gediscounteerde rendement;
@@ -252,7 +254,7 @@ zich door de Q-tabel verspreidt. Q-learning convergeert iets sneller
 en eindigt op een hoger plateau dan SARSA, in lijn met het verschil in
 greedy-evaluatie uit Tabel~\ref{tab:main}.
 
-\begin{figure}[h]
+\begin{figure}[H]
 \centering
 \includegraphics[width=0.95\linewidth]{../results/reward_curves.png}
 \caption{Trainingscurves (rolling mean over 20 episodes) voor
@@ -273,7 +275,7 @@ De Q-learning policy is over alle scenario's stabiel coherent; SARSA's
 policy is grotendeels gelijk maar bevat enkele cellen met een suboptimale
 actie, wat het lagere succespercentage in Tabel~\ref{tab:main} verklaart.
 
-\begin{figure}[h]
+\begin{figure}[H]
 \centering
 \includegraphics[width=\linewidth]{../results/qlearning_default/policy.png}
 \caption{Q-learning greedy policy in acht scenario's. Bovenste rij:
@@ -283,7 +285,7 @@ zit al in de taxi. Kolommen: bestemming \textbf{R}, \textbf{G},
 \label{fig:policy_q}
 \end{figure}
 
-\begin{figure}[h]
+\begin{figure}[H]
 \centering
 \includegraphics[width=\linewidth]{../results/sarsa_default/policy.png}
 \caption{SARSA greedy policy, zelfde acht scenario's als
@@ -300,7 +302,7 @@ Figuren~\ref{fig:sweep_alpha}, \ref{fig:sweep_gamma},
 \ref{fig:sweep_eps} en~\ref{fig:sweep_sarsa_alpha} tonen de
 bijbehorende leercurves met $\pm 1\sigma$ banden.
 
-\begin{table}[h]
+\begin{table}[H]
 \centering
 \caption{Gemiddelde return over de laatste 200 episodes per sweep
 (mean $\pm$ std over 5 seeds).}
@@ -372,21 +374,21 @@ immuun voor, omdat zijn bootstrap altijd $\max_{a'} Q(s_{t+1}, a')$
 gebruikt --- de slechte actie wordt simpelweg buiten beschouwing
 gelaten.
 
-\begin{figure}[h]
+\begin{figure}[H]
 \centering
 \includegraphics[width=0.95\linewidth]{../results/sweep_qlearning_alpha/sweep_curves.png}
 \caption{Q-learning, sweep over $\alpha$. Mean $\pm 1\sigma$ over 5 seeds.}
 \label{fig:sweep_alpha}
 \end{figure}
 
-\begin{figure}[h]
+\begin{figure}[H]
 \centering
 \includegraphics[width=0.95\linewidth]{../results/sweep_qlearning_gamma/sweep_curves.png}
 \caption{Q-learning, sweep over $\gamma$.}
 \label{fig:sweep_gamma}
 \end{figure}
 
-\begin{figure}[h]
+\begin{figure}[H]
 \centering
 \includegraphics[width=0.95\linewidth]{../results/sweep_qlearning_epsilon_decay_episodes/sweep_curves.png}
 \caption{Q-learning, sweep over de lengte van het $\varepsilon$-decay-schema.
@@ -395,7 +397,7 @@ met een dramatisch lagere trainings-return als gevolg.}
 \label{fig:sweep_eps}
 \end{figure}
 
-\begin{figure}[h]
+\begin{figure}[H]
 \centering
 \includegraphics[width=0.95\linewidth]{../results/sweep_sarsa_alpha/sweep_curves.png}
 \caption{SARSA, sweep over $\alpha$. In tegenstelling tot Q-learning
@@ -423,7 +425,7 @@ fundamenteel onderscheidt van rule-based en supervised methoden
 \subsection{Q-learning versus SARSA in dit domein}
 
 Op een omgeving als Cliff Walking
-\citep[Voorbeeld 6.6]{sutton_barto_2018} ontstaat een dramatisch
+\cite[Voorbeeld 6.6]{sutton_barto_2018} ontstaat een dramatisch
 verschil tussen on-policy en off-policy leren omdat de optimale policy
 direct langs een gevaarlijke afgrond loopt. Op Taxi-v3 ontbreekt zo'n
 ``risico-randvoorwaarde''; de optimale policy is unimodaal en SARSA en
@@ -471,7 +473,7 @@ natuurlijke uitbreiding voor vervolgwerk.
 
 \paragraph{Sample-effici\"entie.} Beide algoritmen vereisen rond de
 2000 episodes voor convergentie. Methoden zoals Dyna-Q
-\citep[\S 8.2]{sutton_barto_2018} kunnen dit verlagen door
+\cite[\S 8.2]{sutton_barto_2018} kunnen dit verlagen door
 ervaringen te ``replayen'' in een geleerd omgevingsmodel.
 
 \section{Conclusie}
