@@ -1,0 +1,18 @@
+# Q-learning with higher learning rate for hyperparameter sweep.
+agent:
+  alpha: 0.3
+  gamma: 0.95
+  epsilon_start: 1.0
+  epsilon_end: 0.05
+  epsilon_decay_episodes: 5000
+
+discretization:
+  dx_bins: 15
+  dy_bins: 15
+  vy_bins: 10
+  y_bins: 8
+
+env:
+  reward_alive: 0.1
+  reward_pipe: 1.0
+  reward_death: -1.0

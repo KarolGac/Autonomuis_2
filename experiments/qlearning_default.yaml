@@ -1,0 +1,19 @@
+# Default Q-learning hyperparameters.
+agent:
+  alpha: 0.5
+  gamma: 0.99
+  epsilon_start: 0.5
+  epsilon_end: 0.01
+  epsilon_decay_episodes: 100000
+  optimistic_init: 1.0
+
+discretization:
+  dx_bins: 12
+  dy_bins: 15
+  vy_bins: 10
+
+env:
+  reward_alive: 0.0
+  reward_pipe: 1.0
+  reward_death: -1.0
+  reward_gap_shaping: 1.0

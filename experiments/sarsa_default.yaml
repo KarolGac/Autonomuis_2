@@ -1,0 +1,18 @@
+# Default SARSA hyperparameters (mirror q-learning for fair comparison).
+agent:
+  alpha: 0.5
+  gamma: 0.99
+  epsilon_start: 1.0
+  epsilon_end: 0.01
+  epsilon_decay_episodes: 60000
+
+discretization:
+  dx_bins: 12
+  dy_bins: 15
+  vy_bins: 10
+
+env:
+  reward_alive: 0.1
+  reward_pipe: 5.0
+  reward_death: -100.0
+  reward_gap_shaping: 0.5

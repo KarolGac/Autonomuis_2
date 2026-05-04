@@ -1,0 +1,19 @@
+*.doc
+*.docx
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+
+# Results & artifacts
+results/**/*.pkl
+results/**/*.csv
+results/**/*.png
+!results/.gitkeep
+
+# IDE
+.vscode/
+.idea/
