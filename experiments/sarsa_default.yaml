@@ -1,4 +1,4 @@
-# Default SARSA hyperparameters for Taxi-v3 (mirror Q-learning).
+# Default SARSA hyperparameters for Taxi-v4 (mirror Q-learning).
 agent:
   alpha: 0.5
   gamma: 0.99

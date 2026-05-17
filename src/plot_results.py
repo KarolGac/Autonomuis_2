@@ -42,7 +42,7 @@ def main() -> None:
 
     plt.xlabel("Episode")
     plt.ylabel(f"Return (rolling mean, w={args.window})")
-    plt.title("Training reward curves — Taxi-v3")
+    plt.title("Training reward curves — Taxi-v4")
     plt.axhline(8, ls="--", c="grey", alpha=0.5,
                 label="approx. optimal (~8: 12 steps + 20 delivery)")
     plt.legend()

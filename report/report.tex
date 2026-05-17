@@ -26,7 +26,7 @@
     urlcolor=blue!60!black
 }
 
-\title{\textbf{Tabular Reinforcement Learning op Taxi-v3} \\
+\title{\textbf{Tabular Reinforcement Learning op Taxi-v4} \\
        \large Een vergelijking van Q-learning en SARSA tegen baselines}
 \author{Karol Gackowski \and Joep Houweling}
 \date{\today}
@@ -37,7 +37,7 @@
 \begin{abstract}
 \noindent
 We onderzoeken in welke mate twee klassieke tabulaire Reinforcement
-Learning algoritmen --- Q-learning en SARSA --- de Taxi-v3 omgeving uit
+Learning algoritmen --- Q-learning en SARSA --- de Taxi-v4 omgeving uit
 Gymnasium kunnen oplossen. Beide algoritmen zijn vanaf nul ge\"implementeerd
 in NumPy, getraind op 3000 episodes en vergeleken met een uniform-random
 baseline en een Manhattan-shortest-path heuristiek die geen kennis heeft
@@ -64,7 +64,7 @@ welke acties op de lange termijn lonend zijn via trial-and-error.
 Voor deze portfolio-opdracht hebben wij gekozen voor de \emph{Taxi}
 omgeving, oorspronkelijk geformaliseerd door
 \citet{dietterich_2000} en tegenwoordig opgenomen als
-\texttt{Taxi-v3} in de Gymnasium-suite \cite{towers_2024}. De agent
+\texttt{Taxi-v4} in de Gymnasium-suite \cite{towers_2024}. De agent
 bestuurt een taxi op een $5 \times 5$ raster met muren, moet een
 passagier ophalen op \'e\'en van vier vaste lokaties en deze afleveren op
 een eveneens vooraf bepaalde bestemming. Elke stap kost \'e\'en
@@ -72,7 +72,7 @@ beloningseenheid; een illegale pickup of dropoff kost tien; een
 succesvolle aflevering levert twintig op.
 
 \paragraph{Waarom RL geschikt is.}
-Drie eigenschappen maken Taxi-v3 een natuurlijk doelwit voor RL en
+Drie eigenschappen maken Taxi-v4 een natuurlijk doelwit voor RL en
 ongeschikt voor supervised of regelgebaseerde alternatieven:
 
 \begin{enumerate}
@@ -92,7 +92,7 @@ ongeschikt voor supervised of regelgebaseerde alternatieven:
 
 \paragraph{Onderzoeksvragen.} Dit rapport beantwoordt:
 (i) hoe presteren Q-learning en SARSA, vanuit nul ge\"implementeerd, op
-Taxi-v3 ten opzichte van een random- en een heuristische baseline?
+Taxi-v4 ten opzichte van een random- en een heuristische baseline?
 (ii) hoe gevoelig zijn beide algoritmen voor de keuze van $\alpha$,
 $\gamma$ en het $\varepsilon$-decay-schema?
 (iii) welke kwalitatieve verschillen tussen on-policy (SARSA) en
@@ -101,7 +101,7 @@ off-policy (Q-learning) leren observeren we in dit domein?
 \section{Probleemdefinitie en MDP}
 \label{sec:mdp}
 
-Taxi-v3 wordt gemodelleerd als een Markov Decision Process (MDP)
+Taxi-v4 wordt gemodelleerd als een Markov Decision Process (MDP)
 $\langle \mathcal{S}, \mathcal{A}, P, R, \gamma \rangle$ met de
 volgende elementen:
 
@@ -258,7 +258,7 @@ greedy-evaluatie uit Tabel~\ref{tab:main}.
 \centering
 \includegraphics[width=0.95\linewidth]{../results/reward_curves.png}
 \caption{Trainingscurves (rolling mean over 20 episodes) voor
-Q-learning en SARSA op Taxi-v3. De stippellijn geeft de theoretisch
+Q-learning en SARSA op Taxi-v4. De stippellijn geeft de theoretisch
 benaderde optimale return ($\approx +8$).}
 \label{fig:reward_curves}
 \end{figure}
@@ -347,7 +347,7 @@ $\alpha$ niet zo extreem laag is dat updates verwaarloosbaar worden,
 de eindwaardefunctie convergeert naar dezelfde fixed point.
 
 \paragraph{Q-learning, $\gamma$ (Fig.~\ref{fig:sweep_gamma}).}
-Vergelijkbaar robuust over de geteste range. Voor Taxi-v3 zijn episodes
+Vergelijkbaar robuust over de geteste range. Voor Taxi-v4 zijn episodes
 relatief kort (typisch $<20$ stappen na convergentie), waardoor het
 verschil tussen $\gamma=0{,}8$ en $\gamma=0{,}99$ in de praktijk klein
 blijft.
@@ -427,7 +427,7 @@ fundamenteel onderscheidt van rule-based en supervised methoden
 Op een omgeving als Cliff Walking
 \cite[Voorbeeld 6.6]{sutton_barto_2018} ontstaat een dramatisch
 verschil tussen on-policy en off-policy leren omdat de optimale policy
-direct langs een gevaarlijke afgrond loopt. Op Taxi-v3 ontbreekt zo'n
+direct langs een gevaarlijke afgrond loopt. Op Taxi-v4 ontbreekt zo'n
 ``risico-randvoorwaarde''; de optimale policy is unimodaal en SARSA en
 Q-learning convergeren beide naar (vrijwel) dezelfde policy. Het
 overgebleven verschil --- $5\%$ minder succes voor SARSA en een
@@ -458,14 +458,16 @@ Drie inzichten zijn relevant voor toekomstige toepassingen:
 \subsection{Beperkingen}
 
 \paragraph{Schaal.} Tabulaire methoden vereisen \'e\'en
-$Q(s,a)$-cel per staat-actie-paar. Voor Taxi-v3 ($500 \times 6 = 3000$
+cellen) is dit triviaal, maar in elke realistische omgeving met
+$Q(s,a)$-cel per staat-actie-paar. Voor Taxi-v4 ($500 \times 6 = 3000$
+cellen) is dit triviaal, maar in elke realistische omgeving met
 cellen) is dit triviaal, maar in elke realistische omgeving met
 continue of hoog-dimensionale toestanden onhaalbaar. De volgende stap
 is functie-approximatie via neurale netwerken (Deep Q-Networks,
 \cite{mnih_2015}), waar dezelfde Bellman-update wordt toegepast op de
 gradient van een neuraal netwerk in plaats van een tabel.
 
-\paragraph{Stochasticiteit.} Taxi-v3 is een deterministische
+\paragraph{Stochasticiteit.} Taxi-v4 is een deterministische
 omgeving: elke actie heeft een vast effect. Toevoeging van stochastische
 overgangen (zoals de \texttt{is\_slippery}-modus van CliffWalking) zou
 de Q-learning vs SARSA contrast verder kunnen versterken en is een
@@ -479,7 +481,7 @@ ervaringen te ``replayen'' in een geleerd omgevingsmodel.
 \section{Conclusie}
 
 We hebben Q-learning en SARSA vanaf nul ge\"implementeerd en toegepast op
-de Taxi-v3 omgeving. Q-learning bereikt $100\%$ greedy-succes met een
+de Taxi-v4 omgeving. Q-learning bereikt $100\%$ greedy-succes met een
 gemiddelde episode-lengte dichtbij het theoretisch minimum; SARSA komt
 op $95\%$. Beide algoritmen verslaan zowel een uniform-random baseline
 als een muur-onbewuste Manhattan-shortest-path heuristiek met

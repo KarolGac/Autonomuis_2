@@ -1,6 +1,6 @@
-# Taxi-v3 RL (Q-learning en SARSA)
+# Taxi-v4 RL (Q-learning en SARSA)
 
-Klein RL-project op Gymnasium Taxi-v3. We vergelijken:
+Klein RL-project op Gymnasium Taxi-v4. We vergelijken:
 
 - Q-learning (tabulair)
 - SARSA (tabulair)
@@ -55,7 +55,7 @@ jupyter notebook notebooks/01_project_demo.ipynb
 ```text
 .
 ├── src/
-│   ├── env.py                # Taxi-v3 wrapper en state-decoder
+│   ├── env.py                # Taxi-v4 wrapper en state-decoder
 │   ├── agents/
 │   │   ├── base.py
 │   │   ├── random_agent.py

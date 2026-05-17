@@ -1,4 +1,4 @@
-# Default Q-learning hyperparameters for Taxi-v3.
+# Default Q-learning hyperparameters for Taxi-v4.
 agent:
   alpha: 0.5
   gamma: 0.99

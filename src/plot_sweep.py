@@ -68,7 +68,7 @@ def main() -> None:
 
     plt.xlabel("Episode")
     plt.ylabel(f"Return (rolling mean over {args.window} eps, mean +/- std over {seeds} seeds)")
-    plt.title(f"Sweep over {param} ({manifest['agent']}, Taxi-v3)")
+    plt.title(f"Sweep over {param} ({manifest['agent']}, Taxi-v4)")
     plt.grid(alpha=0.3)
     plt.legend()
     plt.tight_layout()

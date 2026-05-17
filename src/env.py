@@ -1,4 +1,4 @@
-"""Thin wrapper around Gymnasium's Taxi-v3.
+"""Thin wrapper around Gymnasium's Taxi-v4.
 
 State space (500 discrete cells):
     state = ((taxi_row * 5) + taxi_col) * 5 * 4
@@ -31,7 +31,7 @@ LOCATIONS = ((0, 0), (0, 4), (4, 0), (4, 3))   # R, G, Y, B
 
 class TaxiEnv:
     def __init__(self, render_mode: str | None = None) -> None:
-        self.env = gym.make("Taxi-v3", render_mode=render_mode)
+        self.env = gym.make("Taxi-v4", render_mode=render_mode)
         self.action_space = self.env.action_space
         self.observation_space = self.env.observation_space
 

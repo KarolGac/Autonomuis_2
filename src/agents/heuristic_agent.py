@@ -1,4 +1,4 @@
-"""Wall-unaware heuristic baseline for Taxi-v3.
+"""Wall-unaware heuristic baseline for Taxi-v4.
 
 Logic:
     1. If the passenger is not in the taxi:
